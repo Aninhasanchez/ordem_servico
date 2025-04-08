@@ -29,10 +29,7 @@ REST_FRAMEWORK = {
     )
 }
 
-
 AUTH_USER_MODEL = 'auth.User'  
-
-
 
 
 SIMPLE_JWT = {
@@ -55,7 +52,7 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-ROOT_URLCONF = 'cadastro.urls'
+ROOT_URLCONF = 'ordem_servico.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'cadastro.wsgi.application'
+WSGI_APPLICATION = 'ordem_servico.wsgi.application'
 
 
 # Database
