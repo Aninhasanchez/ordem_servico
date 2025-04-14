@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     'api',
     'rest_framework_simplejwt',
     "corsheaders",
-    'django_filters'
+    'django_filters',
 ]
 
 REST_FRAMEWORK = {
@@ -34,7 +34,7 @@ AUTH_USER_MODEL = 'auth.User'
 
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
