@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './styles.css';
 
-export default function Ambientes() {
-  const [ambientes, setAmbientes] = useState([]);
-  const [formData, setFormData] = useState({ ni: '', nome: '', resp: '' });
+export default function manutentores() {
+  const [manutentores, setmanutentores] = useState([]);
+  const [formData, setFormData] = useState({ ni: '', nome: '', area: '', gestor: ''});
   const [editId, setEditId] = useState(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/ambientes')
+    fetch('http://127.0.0.1:8000/api/manutentores')
       .then(res => res.json())
-      .then(data => setAmbientes(data))
-      .catch(err => console.error('Erro ao buscar ambientes:', err));
+      .then(data => setmanutentores(data))
+      .catch(err => console.error('Erro ao buscar manutentores:', err));
   }, []);
 
   const handleChange = (e) => {
@@ -22,62 +22,63 @@ export default function Ambientes() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = editId
-      ? `http://127.0.0.1:8000/api/ambientes/id/${editId}`
-      : 'http://127.0.0.1:8000/api/ambientes';
+      ? `http://127.0.0.1:8000/api/manutentores/id/${editId}`
+      : 'http://127.0.0.1:8000/api/manutentores';
     const method = editId ? 'PUT' : 'POST';
 
     try {
-      const response = await fetch(url, {
+      const areaonse = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        const updatedItem = await response.json();
-        setAmbientes(prev =>
+      if (areaonse.ok) {
+        const updatedItem = await areaonse.json();
+        setmanutentores(prev =>
           editId
             ? prev.map(item => (item.id === editId ? updatedItem : item))
             : [...prev, updatedItem]
         );
-        setFormData({ ni: '', nome: '', resp: '' });
+        setFormData({ ni: '', nome: '', area: '' });
         setEditId(null);
       }
     } catch (err) {
-      console.error('Erro ao enviar ambiente:', err);
+      console.error('Erro ao enviar manutentor:', err);
     }
   };
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/ambientes/id/${id}`, {
+      const areaonse = await fetch(`http://127.0.0.1:8000/api/manutentores/id/${id}`, {
         method: 'DELETE',
       });
 
-      if (response.ok) {
-        setAmbientes(prev => prev.filter(item => item.id !== id));
+      if (areaonse.ok) {
+        setmanutentores(prev => prev.filter(item => item.id !== id));
       }
     } catch (err) {
-      console.error('Erro ao deletar ambiente:', err);
+      console.error('Erro ao deletar manutentor:', err);
     }
   };
 
   const handleEdit = (amb) => {
-    setFormData({ ni: amb.ni, nome: amb.nome, resp: amb.resp });
+    setFormData({ ni: amb.ni, nome: amb.nome, area: amb.area });
     setEditId(amb.id);
   };
 
   return (
     <main className="main-home">
       <div className="home-container">
-        <h1 className="home-title">Gerenciar Ambientes</h1>
+        <h1 className="home-title">Gerenciar manutentores</h1>
 
         <ul className="ambiente-list">
-          {ambientes.map((amb) => (
+          {manutentores.map((amb) => (
             <li key={amb.id}>
               <strong>NI:</strong> {amb.ni} <br />
-              <strong>Nome:</strong> {amb.nome} <br />
-              <strong>Responsável:</strong> {amb.resp}
+              <strong>nome:</strong> {amb.nome} <br />
+              <strong>area:</strong> {amb.area}
+              <strong>gestor:</strong> {amb.gestor} <br />
               <div style={{ marginTop: '12px', display: 'flex', gap: '10px' }}>
                 <button onClick={() => handleEdit(amb)} className="btn-edit">Editar</button>
                 <button onClick={() => handleDelete(amb.id)} className="btn-delete">Deletar</button>
@@ -98,21 +99,29 @@ export default function Ambientes() {
           <input
             type="text"
             name="nome"
-            placeholder="Nome do Ambiente"
+            placeholder="nome"
             value={formData.nome}
             onChange={handleChange}
             required
           />
           <input
             type="text"
-            name="resp"
-            placeholder="Responsável"
-            value={formData.resp}
+            name="area"
+            placeholder="area"
+            value={formData.area}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="gestor"
+            placeholder="gestor"
+            value={formData.gestor}
             onChange={handleChange}
             required
           />
           <button type="submit" className="btn-home">
-            {editId ? 'Atualizar Ambiente' : 'Cadastrar Ambiente'}
+            {editId ? 'Atualizar' : 'Cadastrar'}
           </button>
         </form>
       </div>

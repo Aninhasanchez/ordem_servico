@@ -1,6 +1,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
 }
@@ -12,19 +12,20 @@ body {
 }
 
 .home-container {
-    background-color: #fff;
+    background: linear-gradient(135deg, #2c4d72, #7e2674);
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     max-width: 700px;
     width: 100%;
+    color: #ffffff;
+    text-align: center;
 }
 
 .home-title {
     font-size: 2rem;
-    margin-bottom: 30px;
-    color: #333;
-    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
 }
 
 .ambiente-list {
@@ -36,20 +37,21 @@ body {
 }
 
 .ambiente-list li {
-    background-color: #f9fafb;
+    background: #ffffff;
     border-left: 6px solid #4a90e2;
     border-radius: 10px;
     margin-bottom: 15px;
     padding: 15px 20px;
     transition: box-shadow 0.2s ease;
+    color: #000000;
 }
 
 .ambiente-list li:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.07);
 }
 
 .ambiente-list strong {
-    color: #555;
+    color: #000000;
 }
 
 .ambiente-list button {
@@ -62,21 +64,21 @@ body {
 }
 
 .btn-edit {
-    background-color: #ffc107;
-    color: #fff;
+    background: linear-gradient(135deg, #13a3b6, #126b77);
+    color: #ffffff;
 }
 
 .btn-edit:hover {
-    background-color: #e0a800;
+    background: linear-gradient(to right, #13a3b6, #126b77);
 }
 
 .btn-delete {
-    background-color: #dc3545;
+    background: linear-gradient(135deg, #8f202b, #b02a37);
     color: #fff;
 }
 
 .btn-delete:hover {
-    background-color: #c82333;
+    background: linear-gradient(to right, #8f202b, #b02a37);
 }
 
 .ambiente-form {
@@ -88,22 +90,22 @@ body {
 .ambiente-form input {
     padding: 12px 15px;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #b9b9b9;
     font-size: 1rem;
 }
 
 .btn-home {
     padding: 12px;
-    background-color: #4a90e2;
-    color: white;
+    background: linear-gradient(135deg, #4a90e2, #357ab7);
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 8px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background 0.2s ease;
 }
 
 .btn-home:hover {
-    background-color: #357ab7;
+    background: linear-gradient(to right, #357ab7, #2c4d72);
 }
