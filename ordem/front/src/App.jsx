@@ -4,6 +4,7 @@ import Login from "./pages/login";
 import "./index.css"; 
 import Home from "./pages/home";
 import Ambientes from "./pages/ambientes";
+import Patrimonios from "./pages/patrimonios";
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home/>}/>
             <Route path="/ambientes" element={< Ambientes/>}/>
+            <Route path="/patrimonios" element={< Patrimonios/>}/>
             </Routes>
         </Router>
     )
